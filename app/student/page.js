@@ -21,6 +21,8 @@ import {
 import { formatDate } from '@/lib/dataService';
 import { formatTime12 } from '@/lib/timetable';
 
+export const dynamic = 'force-dynamic';
+
 export default async function StudentHome() {
   await connectDB();
   const u = await getCurrentUser();
