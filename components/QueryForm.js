@@ -1,15 +1,9 @@
 "use client";
 
-<<<<<<< HEAD
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createQuery, getFaculty } from '@/lib/dataService';
 import { isFacultyEligible, checkFacultyEligibility, getEligibleFacultyList } from '@/lib/validators';
-=======
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { createQuery } from '@/lib/dataService';
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 import {
   ACADEMIC_PROGRAMS,
   SUBJECT_GROUPS,
@@ -26,15 +20,11 @@ import {
   BookOpen,
   Layers,
   GraduationCap,
-<<<<<<< HEAD
   Users,
   Search,
   ChevronDown,
   X,
   UserCheck
-=======
-  Users
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 } from 'lucide-react';
 
 const CATEGORIES = [
@@ -60,7 +50,6 @@ const POPULAR_SECTIONS = [
   'Other'
 ];
 
-<<<<<<< HEAD
 function getDefaultSubjectForCourse(courseName = '') {
   const c = String(courseName || '').toLowerCase();
   if (c.includes('bba') || c.includes('mba') || c.includes('b.com') || c.includes('bcom') || c.includes('m.com') || c.includes('commerce') || c.includes('business')) {
@@ -78,8 +67,6 @@ function getDefaultSubjectForCourse(courseName = '') {
   return 'Data Structures';
 }
 
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 export default function QueryForm({ defaultCourse = '', defaultSemester = '', defaultSection = '' }) {
   const router = useRouter();
 
@@ -100,11 +87,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
 
   const [f, setF] = useState({
     semester: defaultSemester ? String(defaultSemester) : '4',
-<<<<<<< HEAD
     subject: getDefaultSubjectForCourse(defaultCourse),
-=======
-    subject: 'Data Structures',
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
     customSubject: '',
     title: '',
     description: '',
@@ -118,7 +101,6 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
   const [isSuccess, setIsSuccess] = useState(false);
   const [busy, setBusy] = useState(false);
 
-<<<<<<< HEAD
   // Faculty list & preferred teacher selection state
   const [allFaculty, setAllFaculty] = useState([]);
   const [loadingFaculty, setLoadingFaculty] = useState(true);
@@ -169,8 +151,6 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   // Active program configuration
   const currentProg = ACADEMIC_PROGRAMS.find((p) => p.course === selectedCourse) || ACADEMIC_PROGRAMS[0];
   const availableBranches = currentProg ? currentProg.branches : ['Other'];
@@ -183,71 +163,12 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
     } else {
       setSelectedBranch('General Specialization');
     }
-<<<<<<< HEAD
     const newSubject = getDefaultSubjectForCourse(newCourse);
     setF((prev) => ({ ...prev, subject: newSubject }));
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   };
 
   const change = (e) => setF({ ...f, [e.target.name]: e.target.value });
 
-<<<<<<< HEAD
-=======
-  async function submit(e) {
-    e.preventDefault();
-    setBusy(true);
-    setMsg('');
-    setIsSuccess(false);
-
-    try {
-      const actualSubject = f.subject === 'Other' && f.customSubject.trim()
-        ? f.customSubject.trim()
-        : f.subject;
-
-      const formattedCourse = formatCourseString({
-        selectedCourse,
-        selectedBranch,
-        customCourse,
-        customBranch
-      });
-
-      const actualSection =
-        selectedSection === 'Other'
-          ? (customSection.trim() || 'Custom Section')
-          : selectedSection;
-
-      const payload = {
-        course: formattedCourse,
-        section: actualSection,
-        semester: Number(f.semester),
-        subject: actualSubject,
-        title: f.title.trim(),
-        description: f.description.trim(),
-        category: f.category,
-        priority: f.priority,
-        attachmentName: f.attachmentName.trim(),
-        attachmentUrl: f.attachmentUrl.trim()
-      };
-
-      const res = await createQuery(payload);
-      setIsSuccess(true);
-      const refCode = res.referenceId || res._id.slice(-6).toUpperCase();
-      setMsg(`Query submitted successfully! Reference ID: #${refCode}`);
-
-      setTimeout(() => {
-        router.push('/student/queries');
-        router.refresh();
-      }, 1200);
-    } catch (err) {
-      setMsg(err.message || 'Failed to submit query. Please try again.');
-      setIsSuccess(false);
-    } finally {
-      setBusy(false);
-    }
-  }
-
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   const currentFormattedTrack = formatCourseString({
     selectedCourse,
     selectedBranch,
@@ -260,7 +181,6 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
       ? (customSection.trim() || 'Custom Section')
       : selectedSection;
 
-<<<<<<< HEAD
   const actualSubject = f.subject === 'Other' && f.customSubject.trim()
     ? f.customSubject.trim()
     : f.subject;
@@ -379,22 +299,10 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
         <div>
           <h2 className="font-heading font-bold text-xl text-[var(--text-primary)]">Ask an Academic Question</h2>
           <p className="text-xs text-[var(--text-secondary)]">Our triage engine routes your query directly to the teaching faculty.</p>
-=======
-  return (
-    <form onSubmit={submit} className="card p-6 md:p-8 space-y-6">
-      <div className="flex items-center gap-3 pb-4 border-b border-white/10">
-        <div className="p-2.5 rounded-xl bg-violet-500/15 text-violet-400 border border-violet-500/30">
-          <BookOpen size={22} />
-        </div>
-        <div>
-          <h2 className="font-heading font-bold text-xl text-white">Ask an Academic Question</h2>
-          <p className="text-xs text-slate-400">Our triage engine routes your query directly to the teaching faculty.</p>
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
         </div>
       </div>
 
       {/* Course & Branch Dependent Dropdown Selection */}
-<<<<<<< HEAD
       <div className="p-4 sm:p-5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-card)] space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[var(--border-card)]">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#A99AEF] font-bold">
@@ -403,26 +311,12 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
           </div>
           <span className="text-[11px] font-mono text-[var(--text-secondary)] bg-[var(--bg-main)] px-2.5 py-0.5 rounded-full border border-[var(--border-card)]">
             Selected: <strong className="text-[#A99AEF] font-semibold">{currentFormattedTrack}</strong> · Sem {f.semester} · Sec <strong className="text-[#A99AEF] font-semibold">{actualSection}</strong>
-=======
-      <div className="p-4 sm:p-5 rounded-xl bg-white/[0.02] border border-white/10 space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-white/5">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
-            <GraduationCap size={15} />
-            <span>Academic Program, Branch &amp; Section Selection</span>
-          </div>
-          <span className="text-[11px] font-mono text-slate-400 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10">
-            Selected: <strong className="text-cyan-300 font-semibold">{currentFormattedTrack}</strong> · Sem {f.semester} · Sec <strong className="text-cyan-300 font-semibold">{actualSection}</strong>
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           </span>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Step 1: Select Course */}
-<<<<<<< HEAD
           <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-          <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             1. Select Course / Degree
             <select
               className="field mt-1.5"
@@ -439,11 +333,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
           </label>
 
           {/* Step 2: Select Branch (Populated dynamically based on Course) */}
-<<<<<<< HEAD
           <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-          <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             2. Select Branch / Specialization
             <select
               className="field mt-1.5"
@@ -460,11 +350,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
           </label>
 
           {/* Step 3: Current Semester */}
-<<<<<<< HEAD
           <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-          <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             3. Current Semester
             <select
               className="field mt-1.5"
@@ -481,11 +367,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
           </label>
 
           {/* Step 4: Class Section / Group */}
-<<<<<<< HEAD
           <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-          <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             4. Class Section / Group
             <select
               className="field mt-1.5"
@@ -505,11 +387,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
         {/* Custom input if 'Other' is chosen for Section */}
         {selectedSection === 'Other' && (
           <div className="pt-2 animate-fadeIn">
-<<<<<<< HEAD
             <label className="block text-xs font-semibold text-[var(--text-primary)]">
-=======
-            <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
               Specify Custom Section Name
               <input
                 className="field mt-1 text-sm"
@@ -522,31 +400,18 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
           </div>
         )}
 
-<<<<<<< HEAD
         <div className="flex items-center gap-2 text-xs text-[var(--text-secondary)] bg-[#A99AEF]/10 border border-[#A99AEF]/25 p-2.5 rounded-lg">
           <Users size={14} className="text-[#A99AEF] shrink-0" />
           <span>
             Faculty appointment: Your doubt will automatically be routed to the instructor appointed to <strong className="text-[var(--text-primary)]">Section {actualSection}</strong>.
-=======
-        <div className="flex items-center gap-2 text-xs text-slate-300 bg-cyan-950/20 border border-cyan-800/30 p-2.5 rounded-lg">
-          <Users size={14} className="text-cyan-400 shrink-0" />
-          <span>
-            Faculty appointment: Your doubt will automatically be routed to the instructor appointed to <strong className="text-cyan-300">Section {actualSection}</strong>.
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           </span>
         </div>
 
         {/* Custom inputs if 'Other' is chosen for Course or Branch */}
         {(selectedCourse === 'Other' || selectedBranch === 'Other') && (
-<<<<<<< HEAD
           <div className="grid md:grid-cols-2 gap-4 pt-3 border-t border-[var(--border-card)] animate-fadeIn">
             {selectedCourse === 'Other' && (
               <label className="block text-xs font-semibold text-[var(--text-primary)]">
-=======
-          <div className="grid md:grid-cols-2 gap-4 pt-3 border-t border-white/5 animate-fadeIn">
-            {selectedCourse === 'Other' && (
-              <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                 Specify Custom Course / Degree Name
                 <input
                   className="field mt-1 text-sm"
@@ -558,11 +423,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
               </label>
             )}
             {selectedBranch === 'Other' && (
-<<<<<<< HEAD
               <label className="block text-xs font-semibold text-[var(--text-primary)]">
-=======
-              <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                 Specify Custom Branch / Specialization Name
                 <input
                   className="field mt-1 text-sm"
@@ -579,11 +440,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
 
       {/* Subject */}
       <div className="grid md:grid-cols-2 gap-5">
-<<<<<<< HEAD
         <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-        <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Subject / Course Module
           <select
             className="field mt-1.5"
@@ -606,11 +463,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
         </label>
 
         {f.subject === 'Other' && (
-<<<<<<< HEAD
           <label className="block text-sm font-semibold text-[var(--text-primary)] animate-fadeIn">
-=======
-          <label className="block text-sm font-semibold text-slate-300 animate-fadeIn">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             Specify Custom Subject Name
             <input
               className="field mt-1.5"
@@ -624,7 +477,6 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
         )}
       </div>
 
-<<<<<<< HEAD
       {/* Preferred Teacher (Optional) */}
       <div className="space-y-1.5" ref={dropdownRef}>
         <div className="flex items-center justify-between">
@@ -853,10 +705,6 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
 
       {/* Title */}
       <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-      {/* Title */}
-      <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
         Query Title
         <input
           className="field mt-1.5"
@@ -870,11 +718,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
       </label>
 
       {/* Description */}
-<<<<<<< HEAD
       <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-      <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
         Detailed Context &amp; Doubt Explanation
         <textarea
           className="field mt-1.5 min-h-[140px] leading-relaxed"
@@ -889,11 +733,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
 
       {/* Category & Priority */}
       <div className="grid md:grid-cols-2 gap-5">
-<<<<<<< HEAD
         <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-        <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Query Category
           <select
             className="field mt-1.5"
@@ -908,11 +748,7 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
           </select>
         </label>
 
-<<<<<<< HEAD
         <label className="block text-sm font-semibold text-[var(--text-primary)]">
-=======
-        <label className="block text-sm font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Urgency / Priority
           <select
             className="field mt-1.5"
@@ -929,15 +765,9 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
       </div>
 
       {/* Optional Attachment */}
-<<<<<<< HEAD
       <div className="p-4 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-card)] space-y-3">
         <div className="flex items-center gap-2 text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
           <Paperclip size={14} className="text-[#A99AEF]" />
-=======
-      <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-3">
-        <div className="flex items-center gap-2 text-xs font-semibold text-slate-300 uppercase tracking-wider">
-          <Paperclip size={14} className="text-cyan-400" />
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Optional Reference / Attachment Link
         </div>
         <div className="grid md:grid-cols-2 gap-4">
@@ -963,19 +793,11 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
         <div
           className={`p-4 rounded-xl flex items-center gap-3 text-sm border ${
             isSuccess
-<<<<<<< HEAD
               ? 'bg-[#A99AEF]/15 border-[#A99AEF]/40 text-[var(--text-primary)]'
               : 'bg-rose-500/10 border-rose-500/30 text-rose-500'
           }`}
         >
           {isSuccess ? <CheckCircle2 size={18} className="text-[#A99AEF]" /> : <AlertCircle size={18} />}
-=======
-              ? 'bg-lime-500/10 border-lime-500/30 text-lime-300'
-              : 'bg-rose-500/10 border-rose-500/30 text-rose-300'
-          }`}
-        >
-          {isSuccess ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <span>{msg}</span>
         </div>
       )}
@@ -984,16 +806,11 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
       <div className="pt-2">
         <button
           type="submit"
-<<<<<<< HEAD
           className="btn btn-primary w-full md:w-auto px-8 py-3 text-base flex items-center justify-center gap-2"
-=======
-          className="btn btn-lime w-full md:w-auto px-8 py-3 text-base flex items-center gap-2 shadow-glow-lime"
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           disabled={busy}
         >
           {busy ? (
             <>
-<<<<<<< HEAD
               <Sparkles size={18} className="animate-spin text-black" />
               <span className="text-black font-semibold">Routing to Faculty…</span>
             </>
@@ -1001,15 +818,6 @@ export default function QueryForm({ defaultCourse = '', defaultSemester = '', de
             <>
               <Send size={18} className="text-black" />
               <span className="text-black font-semibold">Submit Academic Query</span>
-=======
-              <Sparkles size={18} className="animate-spin text-midnight" />
-              <span>Routing to Faculty…</span>
-            </>
-          ) : (
-            <>
-              <Send size={18} className="text-midnight" />
-              <span>Submit Academic Query</span>
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             </>
           )}
         </button>

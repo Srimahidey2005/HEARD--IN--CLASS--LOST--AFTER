@@ -7,11 +7,7 @@ import { attachSession, publicUser } from '@/lib/auth';
 import { registrationError, toList } from '@/lib/authHandlers';
 import { dashboardFor } from '@/lib/portal';
 import { routeWaitingQueries } from '@/lib/triage';
-<<<<<<< HEAD
 import { normalizeEmail, isStrongPassword, PASSWORD_REQUIREMENTS_MESSAGE } from '@/lib/validators';
-=======
-import { normalizeEmail } from '@/lib/validators';
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 import User from '@/models/User';
 
 // Faculty self-registration is OFF unless FACULTY_REGISTRATION_CODE is set in .env.local. When it is on, the
@@ -20,15 +16,11 @@ import User from '@/models/User';
 const schema = z.object({
   name: z.string().trim().min(2, 'Please enter your full name'),
   email: z.string().trim().toLowerCase().email('Please enter your official email address'),
-<<<<<<< HEAD
   password: z
     .string()
     .min(8, 'Password must be at least 8 characters')
     .max(72, 'Password must be at most 72 characters')
     .refine(isStrongPassword, PASSWORD_REQUIREMENTS_MESSAGE),
-=======
-  password: z.string().min(8, 'Password must be at least 8 characters').max(72, 'Password must be at most 72 characters'),
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   department: z.string().trim().min(2, 'Please enter your department'),
   courses: z.array(z.string()).min(1, 'Add at least one course you are assigned to'),
   subjects: z.array(z.string()).min(1, 'Add at least one subject you teach'),

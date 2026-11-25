@@ -8,7 +8,6 @@ export default async function Page() {
   return (
     <div className="space-y-8 max-w-4xl">
       <div>
-<<<<<<< HEAD
         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#A99AEF] font-bold mb-1">
           <Sparkles size={14} />
           Student Query Submission
@@ -17,23 +16,12 @@ export default async function Page() {
           Submit Academic Doubt
         </h1>
         <p className="text-[var(--text-secondary)] mt-2 text-sm leading-relaxed">
-=======
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold mb-1">
-          <Sparkles size={14} />
-          Student Query Submission
-        </div>
-        <h1 className="font-heading text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-          Submit Academic Doubt
-        </h1>
-        <p className="text-slate-400 mt-2 text-sm leading-relaxed">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Provide your subject and context. Our intelligent triage service will automatically match and route your query to the qualified faculty member.
         </p>
       </div>
 
       {/* Query tips banner */}
       <div className="grid sm:grid-cols-3 gap-4">
-<<<<<<< HEAD
         <div className="p-4 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-card)] flex items-start gap-3">
           <CheckCircle2 size={18} className="text-[#A99AEF] shrink-0 mt-0.5" />
           <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
@@ -50,24 +38,6 @@ export default async function Page() {
           <ShieldCheck size={18} className="text-[#A99AEF] shrink-0 mt-0.5" />
           <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
             <strong className="text-[var(--text-primary)] block mb-0.5">Follow-Up:</strong> You can book a 1-on-1 office hour appointment directly from the response.
-=======
-        <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-3">
-          <CheckCircle2 size={18} className="text-lime-400 shrink-0 mt-0.5" />
-          <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-white block mb-0.5">Be Specific:</strong> Mention the theorem, lecture slide, or exact line of code causing confusion.
-          </p>
-        </div>
-        <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-3">
-          <Clock size={18} className="text-cyan-400 shrink-0 mt-0.5" />
-          <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-white block mb-0.5">Fair Routing:</strong> Queries are balanced across faculty workloads for the fastest response.
-          </p>
-        </div>
-        <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-3">
-          <ShieldCheck size={18} className="text-violet-400 shrink-0 mt-0.5" />
-          <p className="text-xs text-slate-300 leading-relaxed">
-            <strong className="text-white block mb-0.5">Follow-Up:</strong> You can book a 1-on-1 office hour appointment directly from the response.
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           </p>
         </div>
       </div>

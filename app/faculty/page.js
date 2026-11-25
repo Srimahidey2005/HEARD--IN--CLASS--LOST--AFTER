@@ -91,7 +91,6 @@ export default async function FacultyDashboard() {
   return (
     <div className="space-y-8">
       {/* Header Banner with Profile Summary */}
-<<<<<<< HEAD
       <div className="card p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#A99AEF] font-bold mb-1">
@@ -106,31 +105,11 @@ export default async function FacultyDashboard() {
             {u.subjects?.length ? (
               u.subjects.map((sub) => (
                 <span key={sub} className="px-2 py-0.5 rounded-md bg-[var(--bg-elevated)] border border-[var(--border-card)] text-[#A99AEF] font-mono text-[11px]">
-=======
-      <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-violet-950/40 via-[#131b31] to-cyan-950/30 border border-white/10 shadow-card flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-violet-400 font-bold mb-1">
-            <Sparkles size={14} />
-            Faculty Instruction Workspace · Dept of {u.department || 'Computer Science'}
-          </div>
-          <h1 className="font-heading text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Professor {u.name}
-          </h1>
-          <div className="flex items-center gap-2 flex-wrap mt-2 text-xs text-slate-300">
-            <span className="font-semibold text-slate-400">Teaching Subjects:</span>
-            {u.subjects?.length ? (
-              u.subjects.map((sub) => (
-                <span key={sub} className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-cyan-300 font-mono text-[11px]">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                   {sub}
                 </span>
               ))
             ) : (
-<<<<<<< HEAD
               <span className="text-[#A99AEF] italic">No subject mappings assigned yet</span>
-=======
-              <span className="text-amber-400 italic">No subject mappings assigned yet</span>
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             )}
           </div>
         </div>
@@ -138,11 +117,7 @@ export default async function FacultyDashboard() {
         <div className="flex items-center gap-3">
           <Link
             href="/faculty/queries"
-<<<<<<< HEAD
             className="btn btn-primary px-5 py-2.5 font-bold text-black"
-=======
-            className="btn btn-lime shadow-glow-lime px-5 py-2.5 font-bold"
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           >
             Review Inbox ({pendingQueries + inProgressQueries})
           </Link>
@@ -150,11 +125,7 @@ export default async function FacultyDashboard() {
             href="/faculty/appointments"
             className="btn btn-secondary px-4 py-2.5"
           >
-<<<<<<< HEAD
             <Calendar size={16} className="text-[#A99AEF]" />
-=======
-            <Calendar size={16} />
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             <span>Office Hours</span>
           </Link>
         </div>
@@ -162,7 +133,6 @@ export default async function FacultyDashboard() {
 
       {/* 6 Key Stat Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 md:gap-4">
-<<<<<<< HEAD
         <div className="card p-4 space-y-1">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)]">Total Assigned</p>
           <p className="font-heading text-2xl md:text-3xl font-extrabold text-[var(--text-primary)] mt-1">{totalAssigned}</p>
@@ -197,42 +167,6 @@ export default async function FacultyDashboard() {
           <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)]">Pending Appts</p>
           <p className="font-heading text-2xl md:text-3xl font-extrabold text-[var(--text-primary)] mt-1">{pendingAppointments}</p>
           <p className="text-[10px] text-[var(--text-muted)] mt-0.5">Requests to confirm</p>
-=======
-        <div className="card p-4 border-l-4 border-l-violet-500">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Assigned</p>
-          <p className="font-heading text-2xl md:text-3xl font-extrabold text-white mt-1">{totalAssigned}</p>
-          <p className="text-[10px] text-slate-400 mt-0.5">All time</p>
-        </div>
-
-        <div className="card p-4 border-l-4 border-l-amber-500">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Awaiting Reply</p>
-          <p className="font-heading text-2xl md:text-3xl font-extrabold text-amber-400 mt-1">{pendingQueries}</p>
-          <p className="text-[10px] text-slate-400 mt-0.5">Newly routed</p>
-        </div>
-
-        <div className="card p-4 border-l-4 border-l-rose-500">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Urgent Doubts</p>
-          <p className="font-heading text-2xl md:text-3xl font-extrabold text-rose-400 mt-1">{urgentQueries}</p>
-          <p className="text-[10px] text-slate-400 mt-0.5">High priority</p>
-        </div>
-
-        <div className="card p-4 border-l-4 border-l-cyan-500">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">In Progress</p>
-          <p className="font-heading text-2xl md:text-3xl font-extrabold text-cyan-400 mt-1">{inProgressQueries}</p>
-          <p className="text-[10px] text-slate-400 mt-0.5">Under drafting</p>
-        </div>
-
-        <div className="card p-4 border-l-4 border-l-lime-400">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Resolved</p>
-          <p className="font-heading text-2xl md:text-3xl font-extrabold text-lime-400 mt-1">{answeredQueries}</p>
-          <p className="text-[10px] text-slate-400 mt-0.5">Answered</p>
-        </div>
-
-        <div className="card p-4 border-l-4 border-l-indigo-400">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Pending Appts</p>
-          <p className="font-heading text-2xl md:text-3xl font-extrabold text-indigo-300 mt-1">{pendingAppointments}</p>
-          <p className="text-[10px] text-slate-400 mt-0.5">Requests to confirm</p>
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
         </div>
       </div>
 
@@ -240,7 +174,6 @@ export default async function FacultyDashboard() {
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Priority Inbox (2 Cols) */}
         <div className="lg:col-span-2 card p-6 md:p-7 space-y-4">
-<<<<<<< HEAD
           <div className="flex items-center justify-between pb-3 border-b border-[var(--border-card)]">
             <div className="flex items-center gap-2.5">
               <Inbox size={18} className="text-[#A99AEF]" />
@@ -249,16 +182,6 @@ export default async function FacultyDashboard() {
             <Link
               href="/faculty/queries"
               className="text-xs font-semibold text-[#A99AEF] hover:text-[#C6B9FF] flex items-center gap-1"
-=======
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
-            <div className="flex items-center gap-2.5">
-              <Inbox size={18} className="text-violet-400" />
-              <h2 className="font-heading font-bold text-lg text-white">Priority Student Queries</h2>
-            </div>
-            <Link
-              href="/faculty/queries"
-              className="text-xs font-semibold text-violet-400 hover:text-violet-300 flex items-center gap-1"
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             >
               <span>Manage all ({totalAssigned})</span>
               <ArrowRight size={13} />
@@ -272,21 +195,12 @@ export default async function FacultyDashboard() {
                 return (
                   <div
                     key={q._id.toString()}
-<<<<<<< HEAD
                     className="p-4 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-card)] transition-colors space-y-2"
                   >
                     <div className="flex items-center justify-between gap-2 flex-wrap">
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-mono font-bold text-[#A99AEF]">{refCode}</span>
                         <span className="text-sm font-semibold text-[var(--text-primary)]">{q.title}</span>
-=======
-                    className="p-4 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/5 transition-colors space-y-2"
-                  >
-                    <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-bold text-cyan-400">{refCode}</span>
-                        <span className="text-sm font-semibold text-white">{q.title}</span>
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                       </div>
                       <div className="flex items-center gap-2">
                         <span className={`pill ${getPriorityPillClass(q.priority)}`}>{q.priority}</span>
@@ -294,7 +208,6 @@ export default async function FacultyDashboard() {
                       </div>
                     </div>
 
-<<<<<<< HEAD
                     <p className="text-xs text-[var(--text-secondary)]">
                       From: <strong className="text-[var(--text-primary)]">{q.student?.name}</strong>
                       {q.student?.registrationNumber ? ` (${q.student.registrationNumber})` : ''} ·{' '}
@@ -302,33 +215,16 @@ export default async function FacultyDashboard() {
                     </p>
 
                     <p className="text-xs text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
-=======
-                    <p className="text-xs text-slate-400">
-                      From: <strong className="text-slate-300">{q.student?.name}</strong>
-                      {q.student?.registrationNumber ? ` (${q.student.registrationNumber})` : ''} ·{' '}
-                      <span className="text-cyan-300">{q.subject}</span> · {q.course}{q.section ? ` · Sec ${q.section}` : ''}
-                    </p>
-
-                    <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                       {q.description}
                     </p>
 
                     <div className="pt-2 flex justify-between items-center text-xs">
-<<<<<<< HEAD
                       <span className="text-[var(--text-secondary)] font-mono text-[11px]">
-=======
-                      <span className="text-slate-500 font-mono text-[11px]">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                         Received: {formatDate(q.createdAt)}
                       </span>
                       <Link
                         href={`/faculty/queries`}
-<<<<<<< HEAD
                         className="text-[#A99AEF] hover:underline font-semibold"
-=======
-                        className="text-cyan-400 hover:underline font-semibold"
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                       >
                         {q.response ? 'Update response →' : 'Write response →'}
                       </Link>
@@ -337,13 +233,8 @@ export default async function FacultyDashboard() {
                 );
               })
             ) : (
-<<<<<<< HEAD
               <div className="py-12 text-center text-[var(--text-secondary)] space-y-2">
                 <Inbox size={32} className="mx-auto text-[var(--text-secondary)]" />
-=======
-              <div className="py-12 text-center text-slate-400 space-y-2">
-                <Inbox size={32} className="mx-auto text-slate-600" />
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                 <p className="text-sm">No queries currently assigned to you.</p>
               </div>
             )}
@@ -352,7 +243,6 @@ export default async function FacultyDashboard() {
 
         {/* Pending Appointments Column (1 Col) */}
         <div className="card p-6 md:p-7 space-y-4">
-<<<<<<< HEAD
           <div className="flex items-center justify-between pb-3 border-b border-[var(--border-card)]">
             <div className="flex items-center gap-2.5">
               <Calendar size={18} className="text-[#A99AEF]" />
@@ -361,16 +251,6 @@ export default async function FacultyDashboard() {
             <Link
               href="/faculty/appointments"
               className="text-xs font-semibold text-[#A99AEF] hover:text-[#C6B9FF] flex items-center gap-1"
-=======
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
-            <div className="flex items-center gap-2.5">
-              <Calendar size={18} className="text-cyan-400" />
-              <h2 className="font-heading font-bold text-lg text-white">Student Consultations</h2>
-            </div>
-            <Link
-              href="/faculty/appointments"
-              className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1"
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             >
               <span>View all</span>
               <ArrowRight size={13} />
@@ -382,56 +262,33 @@ export default async function FacultyDashboard() {
               upcomingAppointmentsList.map((a) => (
                 <div
                   key={a._id.toString()}
-<<<<<<< HEAD
                   className="p-3.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-card)] space-y-2"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-semibold text-[var(--text-primary)] truncate max-w-[150px]">
-=======
-                  className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 space-y-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold text-white truncate max-w-[150px]">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                       {a.reason}
                     </span>
                     <span className={`pill ${getStatusPillClass(a.status)}`}>
                       {a.status}
                     </span>
                   </div>
-<<<<<<< HEAD
                   <p className="text-xs text-[var(--text-secondary)]">
                     Student: <strong className="text-[var(--text-primary)]">{a.student?.name}</strong>
                   </p>
                   <p className="text-[11px] font-mono text-[#A99AEF]">
-=======
-                  <p className="text-xs text-slate-400">
-                    Student: <strong className="text-slate-200">{a.student?.name}</strong>
-                  </p>
-                  <p className="text-[11px] font-mono text-cyan-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                     📅 {formatDate(a.date)} · ⏰ {a.time}
                   </p>
                   <Link
                     href="/faculty/appointments"
-<<<<<<< HEAD
                     className="text-xs text-[#A99AEF] hover:underline font-semibold block pt-1"
-=======
-                    className="text-xs text-violet-400 hover:underline font-semibold block pt-1"
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                   >
                     Review request →
                   </Link>
                 </div>
               ))
             ) : (
-<<<<<<< HEAD
               <div className="py-8 text-center text-[var(--text-secondary)] space-y-2">
                 <Calendar size={28} className="mx-auto text-[var(--text-secondary)]" />
-=======
-              <div className="py-8 text-center text-slate-400 space-y-2">
-                <Calendar size={28} className="mx-auto text-slate-600" />
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                 <p className="text-xs">No pending student appointments.</p>
               </div>
             )}

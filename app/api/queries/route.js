@@ -4,11 +4,7 @@ import { requireUser } from '@/lib/auth';
 import Query from '@/models/Query';
 import User from '@/models/User';
 import { z } from 'zod';
-<<<<<<< HEAD
 import { categorizeQuery, triageQuery, validatePreferredFaculty } from '@/lib/triage';
-=======
-import { categorizeQuery, triageQuery } from '@/lib/triage';
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 import { QUERY_CATEGORIES, QUERY_PRIORITIES } from '@/lib/validators';
 
 const schema = z.object({
@@ -20,23 +16,15 @@ const schema = z.object({
   description: z.string().trim().min(10, 'Please add at least 10 characters of context'),
   category: z.string().optional(),
   priority: z.enum(QUERY_PRIORITIES).default('Medium'),
-<<<<<<< HEAD
   preferredFacultyId: z.string().trim().optional(),
   preferredTeacherId: z.string().trim().optional(),
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   attachmentName: z.string().optional(),
   attachmentUrl: z.string().optional()
 });
 
-<<<<<<< HEAD
 // Module 1 + 3: the query is saved and routed to a qualified faculty member.
 // If student specifies an eligible preferred teacher, assign directly.
 // Otherwise, route automatically using the existing multi-tier triage service.
-=======
-// Module 1 + 3: the query is saved as Pending, categorized (automatically unless the student picked one), then routed
-// to a qualified faculty member by subject/course mapping, which moves it to Assigned.
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 export async function POST(req) {
   const { user, error } = await requireUser(['student']);
   if (error) return error;
@@ -53,7 +41,6 @@ export async function POST(req) {
 
     await connectDB();
 
-<<<<<<< HEAD
     const preferredId = body.preferredFacultyId || body.preferredTeacherId || '';
     let validatedTeacher = null;
     if (preferredId) {
@@ -68,8 +55,6 @@ export async function POST(req) {
       validatedTeacher = validation.faculty;
     }
 
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
     const priorityNormalized = body.priority === 'Normal' ? 'Medium' : body.priority;
     const detectedCategory = picked || categorizeQuery(body);
 
@@ -87,14 +72,9 @@ export async function POST(req) {
       priority: priorityNormalized,
       category: detectedCategory,
       student: user.id,
-<<<<<<< HEAD
       faculty: validatedTeacher ? validatedTeacher._id : null,
       preferredFaculty: validatedTeacher ? validatedTeacher._id : null,
       status: validatedTeacher ? 'Assigned' : 'Pending',
-=======
-      faculty: null,
-      status: 'Pending',
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
       attachment: {
         name: body.attachmentName || '',
         url: body.attachmentUrl || ''
@@ -108,15 +88,10 @@ export async function POST(req) {
       $set: { course: body.course, semester: body.semester, ...(body.section ? { section: body.section } : {}) }
     }).catch(() => null);
 
-<<<<<<< HEAD
     // If no preferred teacher was selected, triage automatically with existing logic
     if (!validatedTeacher) {
       await triageQuery(query);
     }
-=======
-    // Triage and route to qualified faculty
-    await triageQuery(query);
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 
     const populated = await Query.findById(query._id)
       .populate('student', 'name email registrationNumber course semester section')

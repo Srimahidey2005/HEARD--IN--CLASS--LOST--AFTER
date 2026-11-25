@@ -9,7 +9,6 @@ export async function GET(){
   if(error)return error;
   try{
     await connectDB();
-<<<<<<< HEAD
     const rows=await User.find({role:'faculty'}).select('name email department courses subjects sections availability').lean();
     const faculty=rows.map(f=>({...f,isMe:String(f._id)===user.id}));
     return NextResponse.json({
@@ -23,11 +22,6 @@ export async function GET(){
         semester: user.semester || null
       }
     });
-=======
-    const rows=await User.find({role:'faculty'}).select('name email department courses subjects availability').lean();
-    const faculty=rows.map(f=>({...f,isMe:String(f._id)===user.id}));
-    return NextResponse.json({faculty})
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   }catch(e){return NextResponse.json({message:e.message},{status:500})}
 }
 

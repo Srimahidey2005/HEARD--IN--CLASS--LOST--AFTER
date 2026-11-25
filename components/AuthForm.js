@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-<<<<<<< HEAD
 import {
   isLpuEmail,
   isAdminEmail,
@@ -14,9 +13,6 @@ import {
   isStrongPassword,
   PASSWORD_REQUIREMENTS_MESSAGE
 } from '@/lib/validators';
-=======
-import { isLpuEmail, normalizeEmail, LPU_EMAIL_MESSAGE } from '@/lib/validators';
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 import {
   ACADEMIC_PROGRAMS,
   formatCourseString
@@ -31,14 +27,10 @@ import {
   BookOpen,
   Layers,
   GraduationCap,
-<<<<<<< HEAD
   UserPlus,
   ShieldCheck,
   Check,
   CheckCircle2
-=======
-  UserPlus
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 } from 'lucide-react';
 
 const LABELS = {
@@ -56,13 +48,8 @@ const LABELS = {
   },
   admin: {
     login: 'Sign in to Admin Console',
-<<<<<<< HEAD
     register: 'Create Administrator Account',
     emailPlaceholder: 'username@admin.in',
-=======
-    register: '',
-    emailPlaceholder: 'admin@heardinclass.edu',
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
     tagline: 'Academic triage and platform administration'
   },
 };
@@ -71,10 +58,7 @@ const EMPTY = {
   name: '',
   email: '',
   password: '',
-<<<<<<< HEAD
   confirmPassword: '',
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   registrationNumber: '',
   semester: '4',
   department: 'CSE',
@@ -114,10 +98,7 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
 
   const register = mode === 'register';
   const labels = LABELS[portal];
-<<<<<<< HEAD
   const strength = checkPasswordStrength(form.password);
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 
   const currentProg = ACADEMIC_PROGRAMS.find((p) => p.course === selectedCourse) || ACADEMIC_PROGRAMS[0];
   const availableBranches = currentProg ? currentProg.branches : ['Other'];
@@ -144,7 +125,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
       return;
     }
 
-<<<<<<< HEAD
     // Enforce official @admin.in email domain for administrators
     if (portal === 'admin') {
       if (register && !isAdminEmail(email)) {
@@ -175,8 +155,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
       }
     }
 
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
     setBusy(true);
     try {
       const studentFormattedCourse = formatCourseString({
@@ -197,7 +175,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
             course: studentFormattedCourse,
             semester: Number(form.semester)
           }
-<<<<<<< HEAD
         : portal === 'admin'
         ? {
             name: form.name.trim(),
@@ -206,8 +183,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
             confirmPassword: form.confirmPassword,
             registrationNumber: form.registrationNumber.trim()
           }
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
         : {
             name: form.name.trim(),
             email,
@@ -264,11 +239,7 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
   return (
     <form onSubmit={submit} className="space-y-4">
       {register && (
-<<<<<<< HEAD
         <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-        <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Full Name
           <input
             className="field mt-1"
@@ -276,21 +247,13 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
             value={form.name}
             onChange={change}
             required
-<<<<<<< HEAD
             placeholder={portal === 'admin' ? 'e.g. Dr. Alex Vance' : 'e.g. John Doe'}
-=======
-            placeholder="e.g. John Doe"
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           />
         </label>
       )}
 
       {register && portal === 'student' && (
-<<<<<<< HEAD
         <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-        <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Official Registration Number
           <input
             className="field mt-1"
@@ -303,7 +266,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
         </label>
       )}
 
-<<<<<<< HEAD
       {register && portal === 'admin' && (
         <label className="block text-xs font-semibold text-[var(--text-secondary)]">
           Administrator ID
@@ -350,10 +312,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
           : portal === 'admin'
           ? 'Administrator Email (@admin.in)'
           : 'Email Address'}
-=======
-      <label className="block text-xs font-semibold text-slate-300">
-        {portal === 'faculty' ? 'Official University Email' : 'Email Address'}
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
         <input
           className="field mt-1"
           name="email"
@@ -363,7 +321,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
           required
           placeholder={labels.emailPlaceholder}
         />
-<<<<<<< HEAD
         {portal === 'admin' && register && (
           <span className="text-[11px] text-[#A99AEF] font-medium mt-1 block">
             Only @admin.in addresses are accepted (e.g. abc@admin.in)
@@ -374,24 +331,13 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
       {register && portal === 'student' && (
         <div className="space-y-3 p-3.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-card)]">
           <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#A99AEF] font-bold">
-=======
-      </label>
-
-      {register && portal === 'student' && (
-        <div className="space-y-3 p-3.5 rounded-xl bg-white/[0.02] border border-white/10">
-          <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             <GraduationCap size={14} />
             <span>Academic Program &amp; Branch</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* 1. Course Dropdown */}
-<<<<<<< HEAD
             <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-            <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
               1. Course / Degree
               <select
                 className="field mt-1"
@@ -407,13 +353,8 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
               </select>
             </label>
 
-<<<<<<< HEAD
             {/* 2. Branch Dropdown */}
             <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-            {/* 2. Branch Dropdown (Changes dynamically with selected course) */}
-            <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
               2. Branch / Specialization
               <select
                 className="field mt-1"
@@ -430,11 +371,7 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
             </label>
           </div>
 
-<<<<<<< HEAD
           <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-          <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             3. Current Semester
             <select
               className="field mt-1"
@@ -451,15 +388,9 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
 
           {/* Conditional inputs for 'Other' */}
           {(selectedCourse === 'Other' || selectedBranch === 'Other') && (
-<<<<<<< HEAD
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-[var(--border-card)]">
               {selectedCourse === 'Other' && (
                 <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-white/5">
-              {selectedCourse === 'Other' && (
-                <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                   Custom Course Name
                   <input
                     className="field mt-1"
@@ -471,11 +402,7 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
                 </label>
               )}
               {selectedBranch === 'Other' && (
-<<<<<<< HEAD
                 <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-                <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                   Custom Branch Name
                   <input
                     className="field mt-1"
@@ -493,11 +420,7 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
 
       {register && portal === 'faculty' && (
         <>
-<<<<<<< HEAD
           <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-          <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             Department
             <input
               className="field mt-1"
@@ -508,11 +431,7 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
               placeholder="e.g. CSE"
             />
           </label>
-<<<<<<< HEAD
           <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-          <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             Assigned Courses (comma separated)
             <input
               className="field mt-1"
@@ -522,11 +441,7 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
               placeholder="BTech CSE, MCA"
             />
           </label>
-<<<<<<< HEAD
           <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-          <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             Subjects Taught (comma separated)
             <input
               className="field mt-1"
@@ -540,13 +455,8 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
         </>
       )}
 
-<<<<<<< HEAD
       {register && portal === 'faculty' && (
         <label className="block text-xs font-semibold text-[var(--text-secondary)]">
-=======
-      {register && (
-        <label className="block text-xs font-semibold text-slate-300">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Faculty Secret Access Code
           <input
             className="field mt-1"
@@ -554,17 +464,12 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
             type="password"
             value={form.accessCode}
             onChange={change}
-<<<<<<< HEAD
             required
             placeholder="Faculty registration code (required)"
-=======
-            placeholder={portal === 'faculty' ? 'Faculty registration code (required)' : 'Leave blank for students'}
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           />
         </label>
       )}
 
-<<<<<<< HEAD
       <div className="space-y-1">
         <div className="flex items-center justify-between">
           <label className="block text-xs font-semibold text-[var(--text-secondary)]">Password</label>
@@ -577,10 +482,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
             </Link>
           )}
         </div>
-=======
-      <label className="block text-xs font-semibold text-slate-300">
-        Password
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
         <input
           className="field mt-1"
           name="password"
@@ -588,7 +489,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
           value={form.password}
           onChange={change}
           required
-<<<<<<< HEAD
           minLength={register ? 8 : 6}
           placeholder={register ? 'Must be 8+ chars (A-Z, a-z, 0-9, special)' : '••••••••'}
         />
@@ -694,36 +594,14 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
               <p className="font-semibold text-[var(--text-primary)] text-sm">Account Not Found</p>
               <p className="text-[var(--text-secondary)] mt-1 leading-relaxed">
                 No registered {portal} account was found for <strong className="text-[var(--text-primary)]">{notRegisteredInfo.email}</strong>.
-=======
-          minLength={6}
-          placeholder="••••••••"
-        />
-      </label>
-
-      {/* Direct Prompt to Create Account if email is not found */}
-      {notRegisteredInfo && (
-        <div className="p-4 rounded-xl bg-violet-950/60 border border-violet-500/40 text-white text-xs space-y-3 animate-fadeIn">
-          <div className="flex items-start gap-2.5">
-            <UserPlus size={18} className="text-cyan-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-cyan-300 text-sm">Account Not Found</p>
-              <p className="text-slate-300 mt-1 leading-relaxed">
-                No registered {portal} account was found for <strong className="text-white">{notRegisteredInfo.email}</strong>.
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
               </p>
             </div>
           </div>
           <Link
             href={notRegisteredInfo.registerUrl}
-<<<<<<< HEAD
             className="btn w-full text-xs font-bold justify-center py-2.5 flex items-center gap-2 rounded-xl"
           >
             <span>Create {portal === 'student' ? 'Student' : portal === 'admin' ? 'Administrator' : 'Faculty'} Account with this Email</span>
-=======
-            className="btn btn-lime text-xs font-bold w-full justify-center py-2.5 flex items-center gap-2 shadow-glow-lime"
-          >
-            <span>Create {portal === 'student' ? 'Student' : 'Faculty'} Account with this Email</span>
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             <ArrowRight size={14} />
           </Link>
         </div>
@@ -738,25 +616,16 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
 
       <button
         type="submit"
-<<<<<<< HEAD
         className="btn w-full font-bold flex items-center justify-center gap-2 py-3.5 mt-2 rounded-xl transition-all"
-=======
-        className="btn btn-lime w-full font-bold flex items-center justify-center gap-2 py-3 mt-2 shadow-glow-lime"
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
         disabled={busy}
       >
         {busy ? (
           <>
-<<<<<<< HEAD
             <Sparkles size={16} className="animate-spin text-black" />
-=======
-            <Sparkles size={16} className="animate-spin text-midnight" />
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             <span>Processing…</span>
           </>
         ) : (
           <>
-<<<<<<< HEAD
             <span>
               {register
                 ? portal === 'admin'
@@ -765,10 +634,6 @@ export default function AuthForm({ portal = 'student', mode = 'login' }) {
                 : 'Sign In'}
             </span>
             <ArrowRight size={16} className="text-black" />
-=======
-            <span>{register ? 'Create Account' : 'Sign In'}</span>
-            <ArrowRight size={16} className="text-midnight" />
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           </>
         )}
       </button>

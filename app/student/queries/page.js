@@ -3,14 +3,10 @@ import { getCurrentUser } from '@/lib/auth';
 import Query from '@/models/Query';
 import Appointment from '@/models/Appointment';
 import StudentQueriesView from '@/components/StudentQueriesView';
-<<<<<<< HEAD
 import { Sparkles } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
-=======
-import { Sparkles, MessageSquare } from 'lucide-react';
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 
 export default async function StudentQueriesPage() {
   await connectDB();
@@ -78,7 +74,6 @@ export default async function StudentQueriesPage() {
   return (
     <div className="space-y-6">
       <div>
-<<<<<<< HEAD
         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#A99AEF] font-bold mb-1">
           <Sparkles size={14} />
           Student Query Tracking
@@ -87,16 +82,6 @@ export default async function StudentQueriesPage() {
           My Academic Queries
         </h1>
         <p className="text-[var(--text-secondary)] mt-2 text-sm leading-relaxed">
-=======
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold mb-1">
-          <Sparkles size={14} />
-          Student Query Tracking
-        </div>
-        <h1 className="font-heading text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-          My Academic Queries
-        </h1>
-        <p className="text-slate-400 mt-2 text-sm leading-relaxed">
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           Monitor your submitted doubts in real time, view assigned faculty, read detailed faculty explanations, and request follow-up office hours.
         </p>
       </div>

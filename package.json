@@ -7,11 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-<<<<<<< HEAD
     "lint": "next lint",
-=======
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
     "test:e2e": "node scripts/e2e-test.mjs"
   },
   "dependencies": {

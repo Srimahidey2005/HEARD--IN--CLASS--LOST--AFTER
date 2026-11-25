@@ -4,10 +4,7 @@ const QuerySchema = new mongoose.Schema({
   referenceId: { type: String, trim: true, index: true },
   student: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   faculty: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
-<<<<<<< HEAD
   preferredFaculty: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
-=======
->>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   course: { type: String, required: true, trim: true },
   section: { type: String, trim: true, default: '' },
   subject: { type: String, required: true, trim: true },
