@@ -3,3 +3,7 @@ node_modules
 .env.local
 .env*.local
 *.log
+<<<<<<< HEAD
+=======
+.npm-cache/
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2

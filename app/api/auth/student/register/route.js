@@ -5,7 +5,11 @@ import { connectDB } from '@/lib/db';
 import { attachSession, publicUser } from '@/lib/auth';
 import { registrationError } from '@/lib/authHandlers';
 import { dashboardFor } from '@/lib/portal';
+<<<<<<< HEAD
 import { isLpuEmail, normalizeEmail, LPU_EMAIL_MESSAGE, isStrongPassword, PASSWORD_REQUIREMENTS_MESSAGE } from '@/lib/validators';
+=======
+import { isLpuEmail, normalizeEmail, LPU_EMAIL_MESSAGE } from '@/lib/validators';
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
 import User from '@/models/User';
 
 // Student self-registration. Only official @lpu.in addresses are accepted, and the role is always 'student'
@@ -13,11 +17,15 @@ import User from '@/models/User';
 const schema = z.object({
   name: z.string().trim().min(2, 'Please enter your full name'),
   email: z.string().trim().toLowerCase().email('Please enter a valid email address').refine(isLpuEmail, LPU_EMAIL_MESSAGE),
+<<<<<<< HEAD
   password: z
     .string()
     .min(8, 'Password must be at least 8 characters')
     .max(72, 'Password must be at most 72 characters')
     .refine(isStrongPassword, PASSWORD_REQUIREMENTS_MESSAGE),
+=======
+  password: z.string().min(8, 'Password must be at least 8 characters').max(72, 'Password must be at most 72 characters'),
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
   registrationNumber: z.string().trim().min(5, 'Please enter your LPU registration number'),
   course: z.string().trim().min(2, 'Please enter your course'),
   semester: z.coerce.number({ invalid_type_error: 'Please select your semester' }).int().min(1, 'Please select your semester').max(12, 'Please select your semester'),

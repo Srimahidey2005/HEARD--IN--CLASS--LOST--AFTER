@@ -191,19 +191,34 @@ export default function FacultyQueriesPage() {
         </div>
 
         {/* Sort selector bar */}
+<<<<<<< HEAD
         <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border-card)] text-xs text-[var(--text-secondary)]">
           <div className="flex items-center gap-2">
             <ArrowUpDown size={14} className="text-[#A99AEF]" />
+=======
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/5 text-xs text-slate-400">
+          <div className="flex items-center gap-2">
+            <ArrowUpDown size={14} className="text-cyan-400" />
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             <span>Sort by:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
+<<<<<<< HEAD
               className="bg-transparent text-[var(--text-primary)] border-0 font-semibold focus:outline-none cursor-pointer"
             >
               <option value="PRIORITY_DEFAULT" className="bg-[var(--bg-card)]">Urgency &amp; Open First (Recommended)</option>
               <option value="NEWEST" className="bg-[var(--bg-card)]">Newest Submissions First</option>
               <option value="OLDEST" className="bg-[var(--bg-card)]">Oldest Submissions First</option>
               <option value="PRIORITY_DESC" className="bg-[var(--bg-card)]">Highest Priority First</option>
+=======
+              className="bg-transparent text-white border-0 font-semibold focus:outline-none cursor-pointer"
+            >
+              <option value="PRIORITY_DEFAULT" className="bg-[#171F35]">Urgency &amp; Open First (Recommended)</option>
+              <option value="NEWEST" className="bg-[#171F35]">Newest Submissions First</option>
+              <option value="OLDEST" className="bg-[#171F35]">Oldest Submissions First</option>
+              <option value="PRIORITY_DESC" className="bg-[#171F35]">Highest Priority First</option>
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             </select>
           </div>
           <span className="font-mono">
@@ -214,13 +229,21 @@ export default function FacultyQueriesPage() {
 
       {/* Query List */}
       {error && (
+<<<<<<< HEAD
         <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-500 text-sm">
+=======
+        <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           {error}
         </div>
       )}
 
       {loading ? (
+<<<<<<< HEAD
         <div className="card p-12 text-center text-[var(--text-secondary)]">Loading assigned student queries…</div>
+=======
+        <div className="card p-12 text-center text-slate-400">Loading assigned student queries…</div>
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
       ) : processed.length > 0 ? (
         <div className="space-y-4">
           {processed.map((q) => (
@@ -233,9 +256,15 @@ export default function FacultyQueriesPage() {
           ))}
         </div>
       ) : (
+<<<<<<< HEAD
         <div className="card p-12 text-center text-[var(--text-secondary)] space-y-3">
           <Inbox size={36} className="mx-auto text-[var(--text-secondary)]" />
           <p className="text-base font-semibold text-[var(--text-primary)]">No queries match your current filter.</p>
+=======
+        <div className="card p-12 text-center text-slate-400 space-y-3">
+          <Inbox size={36} className="mx-auto text-slate-600" />
+          <p className="text-base font-semibold text-white">No queries match your current filter.</p>
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <button
             onClick={() => {
               setSearch('');
@@ -336,6 +365,7 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
   };
 
   return (
+<<<<<<< HEAD
     <article className="card p-6 md:p-7 space-y-5 transition-all">
       {/* Top Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[var(--border-card)]">
@@ -351,6 +381,23 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
             {q.subject}
           </span>
           <span className="text-xs text-[var(--text-secondary)]">
+=======
+    <article className="card p-6 md:p-7 space-y-5 border border-white/10 hover:border-white/20 transition-all">
+      {/* Top Header */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-white/5">
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <span className="text-xs font-mono font-bold text-violet-400 bg-violet-950/40 px-2 py-0.5 rounded border border-violet-800/40">
+            {refCode}
+          </span>
+          <span className="text-xs font-semibold text-slate-400 font-mono">
+            {formatDateTime(q.createdAt)}
+          </span>
+          <span className="text-xs text-slate-500">·</span>
+          <span className="text-xs text-cyan-400 font-semibold">
+            {q.subject}
+          </span>
+          <span className="text-xs text-slate-400">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             ({q.course}{q.semester ? ` · Sem ${q.semester}` : ''}{q.section ? ` · Sec ${q.section}` : ''})
           </span>
         </div>
@@ -367,6 +414,7 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
 
       {/* Student Details and Question */}
       <div className="space-y-2">
+<<<<<<< HEAD
         <div className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
           <User size={14} className="text-[#A99AEF]" />
           <span>
@@ -378,15 +426,34 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
           {q.title}
         </h2>
         <p className="text-sm text-[var(--text-secondary)] leading-relaxed whitespace-pre-wrap pt-1">
+=======
+        <div className="flex items-center gap-2 text-xs text-slate-400">
+          <User size={14} className="text-cyan-400" />
+          <span>
+            Student: <strong className="text-white">{q.student?.name}</strong>
+            {q.student?.registrationNumber ? ` (Reg. No. ${q.student.registrationNumber})` : ''} · {q.student?.email}
+          </span>
+        </div>
+        <h2 className="font-heading font-bold text-xl text-white">
+          {q.title}
+        </h2>
+        <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap pt-1">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           {q.description}
         </p>
       </div>
 
       {/* Attachment if present */}
       {q.attachment?.name && (
+<<<<<<< HEAD
         <div className="p-3 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-card)] flex items-center justify-between text-xs">
           <div className="flex items-center gap-2 text-[var(--text-secondary)]">
             <Paperclip size={14} className="text-[#A99AEF]" />
+=======
+        <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-2 text-slate-300">
+            <Paperclip size={14} className="text-cyan-400" />
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             <span>Attachment: {q.attachment.name}</span>
           </div>
           {q.attachment.url && (
@@ -394,7 +461,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
               href={q.attachment.url}
               target="_blank"
               rel="noreferrer"
+<<<<<<< HEAD
               className="text-[#A99AEF] hover:underline flex items-center gap-1 font-semibold"
+=======
+              className="text-cyan-400 hover:underline flex items-center gap-1 font-semibold"
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             >
               <span>View Attachment Link</span>
               <ExternalLink size={12} />
@@ -405,7 +476,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
 
       {/* Triage Adjustments: Priority & Category */}
       <div className="flex gap-4 flex-wrap text-xs pt-1">
+<<<<<<< HEAD
         <label className="font-semibold text-[var(--text-secondary)] flex items-center gap-2">
+=======
+        <label className="font-semibold text-slate-400 flex items-center gap-2">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <span>Priority:</span>
           <select
             className="field text-xs py-1.5 px-3 w-auto"
@@ -419,7 +494,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
           </select>
         </label>
 
+<<<<<<< HEAD
         <label className="font-semibold text-[var(--text-secondary)] flex items-center gap-2">
+=======
+        <label className="font-semibold text-slate-400 flex items-center gap-2">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <span>Category:</span>
           <select
             className="field text-xs py-1.5 px-3 w-auto"
@@ -436,19 +515,32 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
 
       {/* Previously Saved Response */}
       {q.response && (
+<<<<<<< HEAD
         <div className="p-4 rounded-xl bg-[var(--bg-elevated)] border border-[#A99AEF]/40 space-y-1.5">
           <div className="flex items-center justify-between text-xs text-[#A99AEF] font-bold uppercase tracking-wider">
+=======
+        <div className="p-4 rounded-xl bg-lime-950/20 border border-lime-500/30 space-y-1.5">
+          <div className="flex items-center justify-between text-xs text-lime-400 font-bold uppercase tracking-wider">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             <span className="flex items-center gap-1.5">
               <CheckCircle2 size={15} />
               Saved Faculty Response
             </span>
             {q.respondedAt && (
+<<<<<<< HEAD
               <span className="text-[11px] text-[var(--text-secondary)] font-mono font-normal">
+=======
+              <span className="text-[11px] text-slate-400 font-mono font-normal">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
                 {formatDateTime(q.respondedAt)}
               </span>
             )}
           </div>
+<<<<<<< HEAD
           <p className="text-sm text-[var(--text-primary)] whitespace-pre-wrap leading-relaxed">
+=======
+          <p className="text-sm text-slate-200 whitespace-pre-wrap leading-relaxed">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             {q.response}
           </p>
         </div>
@@ -456,7 +548,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
 
       {/* Response Textarea */}
       <div className="space-y-2">
+<<<<<<< HEAD
         <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)]">
+=======
+        <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           {q.response ? 'Update Academic Response' : 'Write Academic Response'}
         </label>
         <textarea
@@ -469,13 +565,22 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
 
       {/* Inline Feedback alerts */}
       {err && (
+<<<<<<< HEAD
         <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-500 text-xs">
+=======
+        <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           {err}
         </div>
       )}
       {info && (
+<<<<<<< HEAD
         <div className="p-3 rounded-xl bg-[#A99AEF]/15 border border-[#A99AEF]/30 text-[var(--text-primary)] text-xs flex items-center gap-2">
           <CheckCircle2 size={15} className="text-[#A99AEF]" />
+=======
+        <div className="p-3 rounded-xl bg-lime-500/10 border border-lime-500/30 text-lime-300 text-xs flex items-center gap-2">
+          <CheckCircle2 size={15} />
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <span>{info}</span>
         </div>
       )}
@@ -483,7 +588,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
       {/* Action Buttons */}
       <div className="flex gap-2.5 flex-wrap items-center pt-1">
         <button
+<<<<<<< HEAD
           className="btn btn-primary text-xs font-bold px-4 py-2 text-black"
+=======
+          className="btn btn-lime shadow-glow-lime text-xs font-bold px-4 py-2"
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           disabled={busy || text.length < 2}
           onClick={() =>
             runAction(
@@ -492,7 +601,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
             )
           }
         >
+<<<<<<< HEAD
           <Send size={14} className="text-black" />
+=======
+          <Send size={14} className="text-midnight" />
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <span>{q.response ? 'Update & Send Response' : 'Send Official Response'}</span>
         </button>
 
@@ -501,7 +614,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
           disabled={busy || q.status === 'In Progress'}
           onClick={() => runAction({ status: 'In Progress' }, 'Marked In Progress.')}
         >
+<<<<<<< HEAD
           <Clock size={14} className="text-[#A99AEF]" />
+=======
+          <Clock size={14} className="text-cyan-400" />
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <span>Mark In Progress</span>
         </button>
 
@@ -515,7 +632,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
             )
           }
         >
+<<<<<<< HEAD
           <CheckCircle2 size={14} className="text-[#A99AEF]" />
+=======
+          <CheckCircle2 size={14} className="text-lime-400" />
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <span>Mark Resolved</span>
         </button>
 
@@ -523,7 +644,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
           className="btn btn-secondary text-xs px-3.5 py-2"
           onClick={() => setScheduleOpen((o) => !o)}
         >
+<<<<<<< HEAD
           <Calendar size={14} className="text-[#A99AEF]" />
+=======
+          <Calendar size={14} className="text-violet-400" />
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
           <span>{scheduleOpen ? 'Cancel Consultation Form' : 'Schedule Consultation'}</span>
         </button>
       </div>
@@ -532,6 +657,7 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
       {scheduleOpen && (
         <form
           onSubmit={handleSchedule}
+<<<<<<< HEAD
           className="p-5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-card)] space-y-4"
         >
           <div className="flex items-center gap-2 text-xs font-bold text-[#A99AEF] uppercase tracking-wider">
@@ -539,11 +665,24 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
             Direct Consultation Booking
           </div>
           <p className="text-xs text-[var(--text-secondary)]">
+=======
+          className="p-5 rounded-xl bg-violet-950/20 border border-violet-500/30 space-y-4"
+        >
+          <div className="flex items-center gap-2 text-xs font-bold text-violet-300 uppercase tracking-wider">
+            <Calendar size={15} />
+            Direct Consultation Booking
+          </div>
+          <p className="text-xs text-slate-400">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             Book a meeting directly for this query. The appointment will be saved as <strong>Approved</strong> and appear in the student’s portal.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-4">
+<<<<<<< HEAD
             <label className="block text-xs font-semibold text-[var(--text-primary)]">
+=======
+            <label className="block text-xs font-semibold text-slate-300">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
               Meeting Date
               <input
                 className="field mt-1 text-xs"
@@ -554,7 +693,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
                 required
               />
             </label>
+<<<<<<< HEAD
             <label className="block text-xs font-semibold text-[var(--text-primary)]">
+=======
+            <label className="block text-xs font-semibold text-slate-300">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
               Meeting Time (HH:MM)
               <input
                 className="field mt-1 text-xs"
@@ -566,7 +709,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
             </label>
           </div>
 
+<<<<<<< HEAD
           <label className="block text-xs font-semibold text-[var(--text-primary)]">
+=======
+          <label className="block text-xs font-semibold text-slate-300">
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             Instructions / Venue Note for Student (optional)
             <input
               className="field mt-1 text-xs"
@@ -579,7 +726,11 @@ function FacultyQueryCard({ q, onAnswer, onReload }) {
 
           <button
             type="submit"
+<<<<<<< HEAD
             className="btn btn-primary text-xs font-bold px-4 py-2 text-black"
+=======
+            className="btn btn-cyan text-xs font-bold px-4 py-2"
+>>>>>>> 04831f387b51730adf4cff8146e7368b122385f2
             disabled={busy}
           >
             {busy ? 'Scheduling…' : 'Confirm & Schedule Consultation'}
